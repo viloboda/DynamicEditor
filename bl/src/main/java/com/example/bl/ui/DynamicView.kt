@@ -5,7 +5,7 @@ import com.example.model.FieldDto
 
 interface DynamicView {
     val view: Any
-    val attributeId: String
+    val fieldCode: String
 
     fun getViewGroup(): DymamicViewGroup?
 
@@ -15,13 +15,7 @@ interface DynamicView {
 
     fun setValue(value: FieldDto)
 
-    fun isValid(): Boolean
-
     fun hasChanges(): Boolean
 
     fun setTemplate(templateItem: EditObjectTemplateDto.ItemDto)
-
-    fun refresh()
-
-    fun showWarning(warning: String)
 }

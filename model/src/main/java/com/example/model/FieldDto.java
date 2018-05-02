@@ -2,33 +2,25 @@ package com.example.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class FieldDto {
     @SerializedName("code")
-    private String code;
+    private String code; // Код атрибута
 
     @SerializedName("value")
-    private String value;
+    private String value; // Значение атрибута строкой
 
     @SerializedName("r_values")
-    private List<Long> referenceValues;
+    private List<Long> referenceValues; // Значение атрибута через ссылки на справочник
 
     @SerializedName("change_info")
-    private ChangeInfoDto changeInfo;
-
-    @SerializedName("type")
-    public Integer Type;
+    private ChangeInfoDto changeInfo; // Информация об изменении (где и когда)
 
     // EntityState
     @SerializedName("state")
-    public int State;
-
-    private transient Object customValue;
+    public int State; // Статус (не измененный, новый, измененный, удаленный)
 
     public FieldDto(String code) {
         this.code = code;
@@ -44,19 +36,8 @@ public class FieldDto {
         this.referenceValues = values;
     }
 
-    public FieldDto(String code, Object customValue) {
-        this.code = code;
-        this.customValue = customValue;
-    }
-
     public String getCode() {
         return code;
-    }
-
-    // костыль для изменения названия билдинга, можно будет выпилить как обновим экспорт
-    public void setCode(String code)
-    {
-        this.code = code;
     }
 
     public String getValue() {
@@ -100,14 +81,6 @@ public class FieldDto {
 
     public List<Long> getReferenceValues() {
         return this.referenceValues;
-    }
-
-    public Object getCustomValue() {
-        return this.customValue;
-    }
-
-    public void setCustomValue(Object value) {
-        this.customValue = value;
     }
 
     public void setChangeInfo(ChangeInfoDto changeInfo) {

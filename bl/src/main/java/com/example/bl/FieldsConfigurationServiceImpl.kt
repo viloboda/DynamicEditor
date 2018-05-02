@@ -49,7 +49,7 @@ class FieldsConfigurationServiceImpl(private val repository: Repository, private
                 if (setting.referenceCode != null) {
                     val listAttr = ListFieldConfiguration(getControlType(setting.type))
                     listAttr.caption = setting.name
-                    listAttr.attributeId = setting.fieldCode
+                    listAttr.fieldCode = setting.fieldCode
                     listAttr.values = getReferenceItems(setting.referenceCode)
                     result.add(listAttr)
                 } else {
@@ -71,7 +71,7 @@ class FieldsConfigurationServiceImpl(private val repository: Repository, private
         val controlType = getControlType(s.type)
         val result = ListFieldConfiguration(controlType)
         result.caption = s.parentName
-        result.attributeId = s.fieldCode
+        result.fieldCode = s.fieldCode
 
         for (setting in settingList) {
             result.values.add(AttributeValue(setting.id, setting.name))

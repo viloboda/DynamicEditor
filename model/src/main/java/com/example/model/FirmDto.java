@@ -11,17 +11,17 @@ public class FirmDto extends CommonDtoBase {
 
     @Override
     public String getName() {
-        return getStringValue(getField(FieldSetting.ATTRIBUTE_NAME));
+        return FieldDto.getStringValue(getField(FieldSetting.FIELD_NAME));
     }
 
     @Override
     public String getDescription() {
-        return getStringValue(getField(FieldSetting.ATTRIBUTE_ADDRESS_NAME));
+        return FieldDto.getStringValue(getField(FieldSetting.FIELD_ADDRESS_NAME));
     }
 
     @Override
     public String getDescription2() {
-        String floor = getStringValue(getField("Floor"));
+        String floor = FieldDto.getStringValue(getField("Floor"));
         if (StringHelperKt.isNullOrEmpty(floor)) {
             return null;
 

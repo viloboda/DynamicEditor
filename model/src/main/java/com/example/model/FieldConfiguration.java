@@ -6,7 +6,7 @@ public class FieldConfiguration {
     public static final int CONTROL_TYPE_RADIO_LIST = 3;
     public static final int CONTROL_TYPE_NUMBER = 4;
 
-    public String attributeId;
+    public String fieldCode;
     public String hint;
     public String caption;
     public int controlType;
@@ -14,8 +14,8 @@ public class FieldConfiguration {
     public FieldConfiguration() {
     }
 
-    public FieldConfiguration(String attributeId, String hint, String caption, int controlType) {
-        this.attributeId = attributeId;
+    public FieldConfiguration(String fieldCode, String hint, String caption, int controlType) {
+        this.fieldCode = fieldCode;
         this.hint = hint;
         this.caption = caption;
         this.controlType = controlType;
@@ -28,12 +28,12 @@ public class FieldConfiguration {
         if (o == null || getClass() != o.getClass()) return false;
 
         FieldConfiguration ac = (FieldConfiguration) o;
-        return attributeId != null ? attributeId.equals(ac.attributeId) : ac.attributeId == null;
+        return fieldCode != null ? fieldCode.equals(ac.fieldCode) : ac.fieldCode == null;
 
     }
 
     @Override
     public int hashCode() {
-        return attributeId != null ? attributeId.hashCode() : 0;
+        return fieldCode != null ? fieldCode.hashCode() : 0;
     }
 }

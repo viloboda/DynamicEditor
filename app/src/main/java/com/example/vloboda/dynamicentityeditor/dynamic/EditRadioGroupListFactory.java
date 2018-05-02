@@ -31,7 +31,7 @@ class EditRadioGroupListFactory extends ViewFactoryBase {
     public DynamicView getView(DynamicViewContainer container, final FieldConfiguration configuration) {
         LayoutInflater inflater = (LayoutInflater) container.getLayoutInflater();
         final View listView = inflater.inflate(R.layout.dynamic_list_edit, null);
-        listView.setTag(configuration.attributeId);
+        listView.setTag(configuration.fieldCode);
 
         final List<AttributeValue> values = ((ListFieldConfiguration) configuration).values;
         final RadioButtonsValueAdapter adapter = new RadioButtonsValueAdapter(inflater, values);
@@ -58,7 +58,7 @@ class EditRadioGroupListFactory extends ViewFactoryBase {
 
             @Override
             protected FieldDto getCurrentValue() {
-                return new FieldDto(configuration.attributeId, adapter.getValue());
+                return new FieldDto(configuration.fieldCode, adapter.getValue());
             }
 
             @Override
@@ -79,8 +79,8 @@ class EditRadioGroupListFactory extends ViewFactoryBase {
             }
 
             @Override
-            public String getAttributeId() {
-                return configuration.attributeId;
+            public String getFieldCode() {
+                return configuration.fieldCode;
             }
 
             @Override
@@ -88,10 +88,6 @@ class EditRadioGroupListFactory extends ViewFactoryBase {
                 if (!StringHelperKt.isNullOrEmpty(template.getCaption())) {
                     vCaption.setText(template.getCaption());
                 }
-            }
-
-            @Override
-            public void refresh() {
             }
         };
 

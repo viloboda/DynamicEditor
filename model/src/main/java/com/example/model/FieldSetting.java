@@ -1,9 +1,5 @@
 package com.example.model;
 
-/**
- * Created by s.rogatnev on 31.08.2017.
- */
-
 public class FieldSetting {
     public static final int TYPE_TEXT = 1;
     // список с единичным выбором
@@ -14,14 +10,14 @@ public class FieldSetting {
     public static final int TYPE_BOOL_SIMPLE = 13;
     public static final int TYPE_INT = 4;
 
-    public static String ATTRIBUTE_NAME = "name";
-    public static String ATTRIBUTE_ADDRESS_NAME = "address_name";
+    public static String FIELD_NAME = "name";
+    public static String FIELD_ADDRESS_NAME = "address_name";
 
-    public static String ATTRIBUTE_LEGAL_NAME = "LegalName";
-    public static String ATTRIBUTE_LEGAL_FORM = "OrganizationLegalForm";
+    public static String FIELD_LEGAL_NAME = "LegalName";
+    public static String FIELD_LEGAL_FORM = "OrganizationLegalForm";
 
-    public static String ATTRIBUTE_START_GROUP = "start_group";
-    public static String ATTRIBUTE_END_GROUP = "end_group";
+    public static String FIELD_START_GROUP = "start_group";
+    public static String FIELD_END_GROUP = "end_group";
 
     private final long id;
     private final int type;

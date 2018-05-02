@@ -69,14 +69,6 @@ abstract class DynamicEditableViewBase(private val locationManager: DymanicEdito
 
     }
 
-    override fun isValid(): Boolean {
-        return true
-    }
-
-    override fun showWarning(warning: String) {}
-
-    override fun refresh() {}
-
     companion object {
         private val comparer = FieldDto.FieldDtoByValueEqualityComparer()
     }

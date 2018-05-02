@@ -29,20 +29,20 @@ constructor(private val repository: Repository) : EditorTemplateManager {
     private fun getDefaultCardEditTemplateDto(): EditObjectTemplateDto {
         val items = ArrayList<ItemDto>(20)
 
-        items.add(ItemDto(FieldSetting.ATTRIBUTE_START_GROUP).apply {
+        items.add(ItemDto(FieldSetting.FIELD_START_GROUP).apply {
             ShowHeader = true
             GroupName = "Фирма"
             BoldCaption = true
         })
-        items.add(ItemDto(FieldSetting.ATTRIBUTE_NAME).apply {
+        items.add(ItemDto(FieldSetting.FIELD_NAME).apply {
             Caption = "Название"
         })
-        items.add(ItemDto(FieldSetting.ATTRIBUTE_ADDRESS_NAME))
-        items.add(ItemDto(FieldSetting.ATTRIBUTE_LEGAL_NAME))
-        items.add(ItemDto(FieldSetting.ATTRIBUTE_LEGAL_FORM))
+        items.add(ItemDto(FieldSetting.FIELD_ADDRESS_NAME))
+        items.add(ItemDto(FieldSetting.FIELD_LEGAL_NAME))
+        items.add(ItemDto(FieldSetting.FIELD_LEGAL_FORM))
         items.add(ItemDto("*"))
 
-        items.add(ItemDto(FieldSetting.ATTRIBUTE_END_GROUP))
+        items.add(ItemDto(FieldSetting.FIELD_END_GROUP))
 
         return EditObjectTemplateDto("default", items)
     }

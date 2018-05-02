@@ -30,7 +30,7 @@ public class EditSwitchBoxFactory extends ViewFactoryBase {
         LayoutInflater inflater = (LayoutInflater)container.getLayoutInflater();
 
         final View mainView = inflater.inflate(R.layout.dynamic_switch_edit, null);
-        mainView.setTag(configuration.attributeId);
+        mainView.setTag(configuration.fieldCode);
         mainView.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT));
 
@@ -47,7 +47,7 @@ public class EditSwitchBoxFactory extends ViewFactoryBase {
             @Override
             protected FieldDto getCurrentValue() {
                 String value = checkBoxValue.isChecked() ? "True" : null;
-                return new FieldDto(configuration.attributeId, value);
+                return new FieldDto(configuration.fieldCode, value);
             }
 
             @Override
@@ -58,8 +58,8 @@ public class EditSwitchBoxFactory extends ViewFactoryBase {
             }
 
             @Override
-            public String getAttributeId() {
-                return configuration.attributeId;
+            public String getFieldCode() {
+                return configuration.fieldCode;
             }
 
             @Override
@@ -67,10 +67,6 @@ public class EditSwitchBoxFactory extends ViewFactoryBase {
                 if (!StringHelperKt.isNullOrEmpty(template.getCaption())) {
                     checkBoxValue.setText(template.getCaption());
                 }
-            }
-
-            @Override
-            public void refresh() {
             }
         };
 

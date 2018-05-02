@@ -210,13 +210,4 @@ public abstract class CommonDtoBase implements SimpleDto {
     public int hashCode() {
         return (int) (id ^ (id >>> 32));
     }
-
-    String getStringValue(FieldDto dto) {
-        String result = dto != null ? dto.getValue() : null;
-        if (StringHelperKt.isNullOrEmpty(result)) {
-            return null;
-        }
-
-        return result;
-    }
 }

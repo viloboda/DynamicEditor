@@ -2,7 +2,8 @@ package com.example.vloboda.dynamicentityeditor.dal;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import org.sqlite.database.sqlite.SQLiteDatabase;
+//import org.sqlite.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.Nullable;
 import android.util.Log;
 

@@ -52,7 +52,7 @@ public class EditTextFactory extends ViewFactoryBase {
             textLayout.setHint(configuration.caption);
         }
         editText.setInputType(getInputType());
-        editText.setTag(configuration.attributeId);
+        editText.setTag(configuration.fieldCode);
 
         editText.setOnEditorActionListener((textView, actionId, keyEvent) -> {
             if(actionId == EditorInfo.IME_ACTION_GO){
@@ -75,7 +75,7 @@ public class EditTextFactory extends ViewFactoryBase {
 
             @Override
             protected FieldDto getCurrentValue() {
-                return new FieldDto(configuration.attributeId, editText.getText().toString());
+                return new FieldDto(configuration.fieldCode, editText.getText().toString());
             }
 
             @Override
@@ -94,8 +94,8 @@ public class EditTextFactory extends ViewFactoryBase {
             }
 
             @Override
-            public String getAttributeId() {
-                return configuration.attributeId;
+            public String getFieldCode() {
+                return configuration.fieldCode;
             }
 
             @Override
@@ -103,10 +103,6 @@ public class EditTextFactory extends ViewFactoryBase {
                 if (!StringHelperKt.isNullOrEmpty(template.getCaption())) {
                     textLayout.setHint(template.getCaption());
                 }
-            }
-
-            @Override
-            public void refresh() {
             }
         };
 

@@ -18,7 +18,7 @@ import java.util.Stack
 
 abstract class DynamicViewPresenterBase<TDto : SimpleDto, TView : DynamicViewContainer>
     internal constructor(private val fieldsConfigurationService: FieldsConfigurationService,
-                         private val attributesFactory: DynamicFieldsFactory,
+                         private val fieldViewFactory: DynamicFieldsFactory,
                          private val locationManager: DymanicEditorLocationManager,
                          private val toaster: DynamicToaster,
                          private val templateManager: EditorTemplateManager) {
@@ -28,7 +28,7 @@ abstract class DynamicViewPresenterBase<TDto : SimpleDto, TView : DynamicViewCon
     internal lateinit var containerView: TView
     internal lateinit var dto: TDto
 
-    private val removedAttributes = HashSet<String>()
+    private val removedFields = HashSet<String>()
 
     private val editTemplate: EditObjectTemplateDto
         get() = templateManager.getEditTemplate(dto.objectType)
@@ -70,21 +70,21 @@ abstract class DynamicViewPresenterBase<TDto : SimpleDto, TView : DynamicViewCon
         val groupStack = Stack<DymamicViewGroup>()
         var lastViewGroup: DymamicViewGroup? = null
 
-        val processedAttributes = HashSet<String>(10)
+        val processedFields = HashSet<String>(10)
 
         for (templateItem in this.template.Items) {
-            if (templateItem.FieldCode == FieldSetting.ATTRIBUTE_START_GROUP) {
+            if (templateItem.FieldCode == FieldSetting.FIELD_START_GROUP) {
                 if (lastViewGroup != null) {
                     groupStack.push(lastViewGroup)
                 }
-                lastViewGroup = attributesFactory.getViewGroup(this.containerView, templateItem.GroupName)
+                lastViewGroup = fieldViewFactory.getViewGroup(this.containerView, templateItem.GroupName)
 
                 lastViewGroup.setTemplate(templateItem)
                 views.add(lastViewGroup)
                 continue
             }
 
-            if (templateItem.FieldCode == FieldSetting.ATTRIBUTE_END_GROUP) {
+            if (templateItem.FieldCode == FieldSetting.FIELD_END_GROUP) {
                 if (groupStack.empty()) {
                     if (!lastViewGroup!!.isEmpty) {
                         this.containerView.addLayoutView(lastViewGroup)
@@ -101,31 +101,31 @@ abstract class DynamicViewPresenterBase<TDto : SimpleDto, TView : DynamicViewCon
                         ?: continue
 
                 for (config in configuration) {
-                    if (!processedAttributes.contains(config.attributeId)) {
-                        processAttribute(lastViewGroup, commonTemplateItem, config)
+                    if (!processedFields.contains(config.fieldCode)) {
+                        processField(lastViewGroup, commonTemplateItem, config)
                     }
                 }
                 continue
             }
 
-            val config = getAttributeConfiguration(configuration, templateItem.FieldCode)
+            val config = getFieldConfiguration(configuration, templateItem.FieldCode)
                     ?: continue
 
-            processedAttributes.add(config.attributeId)
-            processAttribute(lastViewGroup, templateItem, config)
+            processedFields.add(config.fieldCode)
+            processField(lastViewGroup, templateItem, config)
         }
     }
 
-    private fun getAttributeConfiguration(configuration: List<FieldConfiguration>, fieldCode: String): FieldConfiguration? {
+    private fun getFieldConfiguration(configuration: List<FieldConfiguration>, fieldCode: String): FieldConfiguration? {
         for (item in configuration) {
-            if (item.attributeId == fieldCode)
+            if (item.fieldCode == fieldCode)
                 return item
         }
 
         return null
     }
 
-    private fun processAttribute(lastViewGroup: DymamicViewGroup?, templateItem: EditObjectTemplateDto.ItemDto, config: FieldConfiguration) {
+    private fun processField(lastViewGroup: DymamicViewGroup?, templateItem: EditObjectTemplateDto.ItemDto, config: FieldConfiguration) {
         val view = getDynamicView(templateItem, config)
 
         views.add(view)
@@ -138,20 +138,16 @@ abstract class DynamicViewPresenterBase<TDto : SimpleDto, TView : DynamicViewCon
     }
 
     private fun getDynamicView(templateItem: EditObjectTemplateDto.ItemDto, config: FieldConfiguration): DynamicView {
-        val view = attributesFactory.getView(this.containerView, config, templateItem)
+        val view = fieldViewFactory.getView(this.containerView, config, templateItem)
 
-        val attribute = this.dto.getField(config.attributeId)
-        if (attribute != null) {
-            setViewValueFromAttribute(view, attribute)
+        val field = this.dto.getField(config.fieldCode)
+        if (field != null) {
+            view.setValue(field)
         }
 
         view.setTemplate(templateItem)
 
         return view
-    }
-
-    private fun setViewValueFromAttribute(view: DynamicView, attribute: FieldDto) {
-        view.setValue(attribute)
     }
 
     fun onOkClick() {
@@ -167,11 +163,11 @@ abstract class DynamicViewPresenterBase<TDto : SimpleDto, TView : DynamicViewCon
             return
         }
 
-        val attributes = getAttributesFromView(initialDto)
-        dto.setFields(attributes, removedAttributes)
+        val fields = getFieldFromView(initialDto)
+        dto.setFields(fields, removedFields)
         dto.changeInfo = locationManager.changeInfo
 
-        fillRemovedAttributes(dto, initialDto)
+        fillRemovedFields(dto, initialDto)
 
         try {
             val hasChanges = dto.IsInAddingMode() || initialDto != dto
@@ -215,7 +211,7 @@ abstract class DynamicViewPresenterBase<TDto : SimpleDto, TView : DynamicViewCon
     fun onBackButtonClick() {
         var hasChanges = false
         for (value in views) {
-            if (value.attributeId == FieldSetting.ATTRIBUTE_START_GROUP) {
+            if (value.fieldCode == FieldSetting.FIELD_START_GROUP) {
                 continue
             }
             if (value.hasChanges()) {
@@ -232,19 +228,19 @@ abstract class DynamicViewPresenterBase<TDto : SimpleDto, TView : DynamicViewCon
         containerView.showCloseAlertDialog()
     }
 
-    private fun getAttributesFromView(initialDto: TDto?): List<FieldDto> {
-        val attributes = ArrayList<FieldDto>(views.size)
-        removedAttributes.clear()
+    private fun getFieldFromView(initialDto: TDto?): List<FieldDto> {
+        val fields = ArrayList<FieldDto>(views.size)
+        removedFields.clear()
 
         for (value in views) {
-            if (value.attributeId == FieldSetting.ATTRIBUTE_START_GROUP) {
+            if (value.fieldCode == FieldSetting.FIELD_START_GROUP) {
                 continue
             }
 
             val currentField = value.getValue() ?: continue
 
             if (currentField.isEmpty) {
-                removedAttributes.add(value.attributeId)
+                removedFields.add(value.fieldCode)
                 continue
             }
 
@@ -252,10 +248,10 @@ abstract class DynamicViewPresenterBase<TDto : SimpleDto, TView : DynamicViewCon
                 currentField.State = EntityState.STATE_NEW
             }
 
-            attributes.add(currentField)
+            fields.add(currentField)
         }
 
-        return attributes
+        return fields
     }
 
     protected abstract fun afterSaveObject()
@@ -266,7 +262,7 @@ abstract class DynamicViewPresenterBase<TDto : SimpleDto, TView : DynamicViewCon
     @Throws(DataContextException::class)
     protected abstract fun undoChanges(dto: TDto, initialDto: TDto?)
 
-    private fun fillRemovedAttributes(currentDto: TDto, initialDto: TDto?) {
+    private fun fillRemovedFields(currentDto: TDto, initialDto: TDto?) {
         if (initialDto == null) {
             return
         }

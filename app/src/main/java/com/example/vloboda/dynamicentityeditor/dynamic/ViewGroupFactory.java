@@ -85,8 +85,8 @@ public class ViewGroupFactory {
             }
 
             @Override
-            public String getAttributeId() {
-                return FieldSetting.ATTRIBUTE_START_GROUP;
+            public String getFieldCode() {
+                return FieldSetting.FIELD_START_GROUP;
             }
 
             @Override
@@ -96,19 +96,6 @@ public class ViewGroupFactory {
                 if (!StringHelperKt.isNullOrEmpty(templateItem.getLayoutOrientation()) && templateItem.getLayoutOrientation().equals("horizontal")) {
                     mainLayout.setOrientation(LinearLayout.HORIZONTAL);
                 }
-            }
-
-            @Override
-            public void refresh() {
-            }
-
-            @Override
-            public boolean isValid() {
-                return true;
-            }
-
-            @Override
-            public void showWarning(String warning) {
             }
 
             @Override
