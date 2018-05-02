@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/simple_view_margin_side"
+    android:paddingRight="@dimen/simple_view_margin_side"
+    android:paddingTop="16dp"
+    android:paddingBottom="4dp"
+    android:orientation="vertical"
+    android:background="@drawable/white_rounded_bg"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        style="@style/BodyRegularBlack"
+        android:text="@string/unsaved_changes_alert"
+        android:id="@+id/ad_text"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="44dp"
+        android:layout_gravity="right"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="24dp"
+            style="@style/ButtonMediumPrimary"
+            android:gravity="center_vertical"
+            android:text="@string/continue_editing"
+            android:textAllCaps="true"
+            android:id="@+id/ad_button_left"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            style="@style/ButtonMediumPrimary"
+            android:gravity="center_vertical"
+            android:text="@string/remove_unsaved_changes"
+            android:textAllCaps="true"
+            android:id="@+id/ad_button_right"
+            />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/fev_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:theme="@style/ToolBarStyle"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:layout_alignParentTop="true"
+            >
+            <View
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_arrow_back_white_24dp"
+                android:id="@+id/fev_back_button"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginStart="48dp"
+                android:text="Редактировать фирму"
+                android:textColor="@color/white"
+                android:id="@+id/fev_title"
+                />
+
+            <View
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_check_white_24dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="12dp"
+                android:id="@+id/fev_ok_button"
+                />
+
+            <View
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/ic_undo_white_24dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="24dp"
+                android:id="@+id/fev_undo_button"
+                />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:id="@+id/fev_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="20dp"
+                android:orientation="vertical">
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginLeft="@dimen/simple_view_margin_side"
+                android:layout_marginTop="32dp"
+                style="@style/ButtonMediumPrimary"
+                android:text="Удалить"
+                android:textAllCaps="true"
+                android:id="@+id/fev_delete_button"
+                />
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <Switch
+        android:id="@+id/dswe_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/simple_view_margin_side"
+        android:layout_marginRight="@dimen/simple_view_margin_side"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="10dp"
+        android:saveEnabled="false"
+        style="@style/BodyRegularBlack"
+        android:text="sdfsdf"
+        />
+
+</FrameLayout>

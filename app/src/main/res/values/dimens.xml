@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fab_list_padding">12dp</dimen>
+    <dimen name="fab_list_size">56dp</dimen>
+    <dimen name="simple_view_margin_side">24dp</dimen>
+    <dimen name="simple_view_margin_top_list">12dp</dimen>
+    <dimen name="simple_view_text_height">20dp</dimen>
+    <dimen name="actionBarSize">60dp</dimen>
+    <dimen name="view_dash_side_margin">12dp</dimen>
+</resources>

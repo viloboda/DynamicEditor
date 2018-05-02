@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/CaptionRegularGray"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+        android:id="@+id/det_text_layout"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        >
+
+        <EditText
+            android:id="@+id/det_main_text"
+            style="@style/BodyRegularBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-4dp"
+            android:layout_marginRight="-4dp"
+            android:backgroundTint="@color/silver"
+            android:maxLines="100"
+            android:paddingBottom="15dp"
+            android:paddingTop="13dp"
+            android:textColorHint="@color/gray"
+            android:imeOptions="actionGo"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+</merge>

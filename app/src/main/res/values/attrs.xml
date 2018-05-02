@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SingleSpinnerSearch">
+        <attr name="popupTitle" />
+        <attr name="hintText" />
+        <attr name="show_search_button" format="boolean" />
+        <attr name="show_not_set_button" format="boolean" />
+    </declare-styleable>
+</resources>

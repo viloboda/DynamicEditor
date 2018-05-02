@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">DynamicEntityEditor</string>
+    <string name="search">Поиск...</string>
+    <string name="not_found">Ничего не найдено</string>
+    <string name="ready_button">Готово</string>
+    <string name="not_set">Не задано</string>
+
+    <string name="unsaved_changes_alert">Изменения не сохранены.\nУдалить их?</string>
+    <string name="revert_changes_alert">Удалить все внесенные изменения?</string>
+    <string name="continue_editing">Продолжить работу</string>
+    <string name="remove_unsaved_changes">Удалить</string>
+
+    <string name="cancel">Отмена</string>
+</resources>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="312dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="12dp"
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="4dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginLeft="@dimen/simple_view_margin_side"
+            android:layout_marginRight="@dimen/simple_view_margin_side"
+            android:layout_gravity="center_vertical"
+            style="@style/TitleBoldBlack"
+            android:id="@+id/ssv_title"
+            android:text="Заголовок"
+            android:visibility="visible"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            style="@style/BodyRegularBlack"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColorHint="@color/gray"
+            android:paddingBottom="16dp"
+            android:hint="@string/search"
+            android:id="@+id/ssv_search_text"
+            android:visibility="gone"
+            android:imeOptions="actionGo"
+            android:inputType="text"
+            />
+
+        <ImageButton
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="@dimen/simple_view_margin_side"
+            android:src="@drawable/ic_search_gray_24dp"
+            android:background="@color/white"
+            android:id="@+id/ssv_search_button"
+            />
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:id="@+id/ssv_list"
+            >
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/ssv_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/simple_view_margin_side"
+            android:layout_marginRight="@dimen/simple_view_margin_side"
+            android:layout_marginTop="4dp"
+            style="@style/BodyRegularBlack"
+            android:text="@string/not_found"
+            android:visibility="gone"
+            />
+    </FrameLayout>
+</LinearLayout>

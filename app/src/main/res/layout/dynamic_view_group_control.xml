@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/expand_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="-2dp"
+        >
+
+        <TextView
+            android:id="@+id/dvc_caption"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="@dimen/simple_view_margin_side"
+            android:layout_gravity="center_vertical"
+            style="@style/TitleBoldBlack"
+            android:text="Заголовок"
+            />
+
+        <View
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginRight="@dimen/simple_view_margin_side"
+            android:background="@drawable/ic_drop_down_gray_24dp"
+            android:id="@+id/arrow"
+            android:layout_gravity="center_vertical|right"
+            />
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:id="@+id/dvgc_space"
+        android:visibility="visible"
+        android:background="@color/white"
+        />
+
+    <net.cachapa.expandablelayout.ExpandableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="20dp"
+        android:id="@+id/dvc_main_content"
+        app:el_duration="100"
+        app:el_expanded="false"
+        app:el_parallax="0.5"
+        >
+    </net.cachapa.expandablelayout.ExpandableLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:id="@+id/dvgc_dash_space"
+        android:visibility="gone"
+        android:background="@color/white"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/view_dash_side_margin"
+        android:layout_marginRight="@dimen/view_dash_side_margin"
+        android:background="@color/dash_line"
+        android:id="@+id/dvc_dl"
+        />
+</LinearLayout>

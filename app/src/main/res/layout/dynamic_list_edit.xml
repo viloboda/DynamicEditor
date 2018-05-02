@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginStart="@dimen/simple_view_margin_side"
+        android:layout_marginEnd="@dimen/simple_view_margin_side"
+        android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        style="@style/CaptionRegularGray"
+        android:id="@+id/dle_caption"
+        />
+    <com.example.vloboda.dynamicentityeditor.controls.SingleSpinnerSearch
+        xmlns:custom="http://schemas.android.com/apk/res/com.example.vloboda.dynamicentityeditor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/simple_view_margin_side"
+        android:layout_marginRight="@dimen/simple_view_margin_side"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="8dp"
+        android:id="@+id/dvl_spinner"
+        custom:hintText="Хинт текст"
+        >
+    </com.example.vloboda.dynamicentityeditor.controls.SingleSpinnerSearch>
+</LinearLayout>

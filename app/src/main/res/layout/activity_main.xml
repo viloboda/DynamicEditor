@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/am_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:theme="@style/ToolBarStyle"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            android:layout_alignParentTop="true"
+            />
+    </android.support.design.widget.AppBarLayout>
+
+
+    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/actionBarSize"
+        android:id="@+id/am_rv"
+        android:scrollbars="vertical"
+        />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/mv_add_button"
+        android:layout_width="@dimen/fab_list_size"
+        android:layout_height="@dimen/fab_list_size"
+        android:src="@drawable/ic_add_white_24dp"
+        android:scaleType="center"
+        app:backgroundTint="@color/colorPrimary"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/fab_list_padding"
+        android:layout_marginEnd="@dimen/fab_list_padding"
+        />
+
+</FrameLayout>
