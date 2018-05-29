@@ -53,5 +53,6 @@ class FirmEditablePresenter(attributesFactory: DynamicFieldsFactory,
 
     fun onDeleteButtonClick() {
         repository.removeObject(dto)
+        closeView()
     }
 }

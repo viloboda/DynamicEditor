@@ -23,10 +23,6 @@ import com.example.vloboda.dynamicentityeditor.dynamic.DynamicAttributesFactoryI
 
 class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
-    companion object {
-        const val REQUES_MAKE_PHOTO = 2
-    }
-
     private val REQUEST_READ_ACCESS = 1
 
     private lateinit var inflater: LayoutInflater
@@ -64,8 +60,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         ActivityCompat.requestPermissions(this,
                 arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Manifest.permission.CAMERA),
+                        Manifest.permission.READ_EXTERNAL_STORAGE),
                 REQUEST_READ_ACCESS)
     }
 
@@ -85,7 +80,7 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         }
 
         val recyclerView = findViewById<RecyclerView>(R.id.am_rv)
-        var layoutManager = LinearLayoutManager(this)
+        val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         rvAdapter = RvAdapter(inflater, FirmListDto(repository.getFirms(null)), this)
         recyclerView.adapter = rvAdapter
@@ -93,8 +88,8 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         val divider = DividerItemDecoration(this, layoutManager.orientation)
         recyclerView.addItemDecoration(divider)
 
-        findViewById<View>(R.id.mv_add_button).setOnClickListener(View.OnClickListener {
-            var newFirm = FirmDto(repository.nextObjectId)
+        findViewById<View>(R.id.mv_add_button).setOnClickListener({
+            val newFirm = FirmDto(repository.nextObjectId)
             newFirm.IsAddingMode = true
             val fm = supportFragmentManager
             val dialog = FirmEditableViewImpl.createView(newFirm, this)
@@ -109,11 +104,11 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
         val searchItem = menu.findItem(R.id.mm_searchBar)
 
-        val searchView = searchItem.getActionView() as SearchView
-        searchView.setQueryHint("Поиск...")
+        val searchView = searchItem.actionView as SearchView
+        searchView.queryHint = "Поиск..."
         searchView.setOnQueryTextListener(this)
-        searchView.setIconified(true)
-        searchView.setMaxWidth(Integer.MAX_VALUE);
+        searchView.isIconified = true
+        searchView.maxWidth = Integer.MAX_VALUE
 
         return true
     }
